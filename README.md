@@ -1,6 +1,6 @@
 # ⬡ Ollive Inference Logger
 
-A lightweight, production-grade inference logging and ingestion system for LLM applications - built as a Founding Engineer assignment for [Ollive.ai](https://ollive.ai)
+> A lightweight, production-grade inference logging and ingestion system for LLM applications - built as a Founding Engineer assignment for [Ollive.ai](https://ollive.ai)
 
 ---
 
