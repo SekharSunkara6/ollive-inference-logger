@@ -11,7 +11,16 @@ from pii_redactor import redact_pii
 
 app = FastAPI(title="Ollive Ingestion Service")
 
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "https://ollive-inference-logger.vercel.app/",  # your vercel URL
+        "*"  # or just keep this for now
+    ],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
 redis_client = redis.from_url(REDIS_URL, decode_responses=True)
