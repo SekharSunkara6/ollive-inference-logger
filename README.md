@@ -107,6 +107,7 @@ A lightweight, production-grade inference logging and ingestion system for LLM a
 - ✅ **PII redaction** — email, phone, Aadhaar, PAN, SSN, card numbers
 - ✅ **Multi-provider SDK** — Groq, Gemini, OpenRouter supported
 - ✅ **List / Resume / Cancel** conversations in UI
+- ✅ **K8s deployment** — deployments, services, ingress, secrets for all 4 components in `/k8s`
 
 ---
 
@@ -350,7 +351,7 @@ Full interactive docs: https://ollive-ingestion-f5ed.onrender.com/docs
 - [ ] **Auth layer** — API keys per tenant, JWT for frontend
 - [ ] **Cost tracking** — per-provider token pricing, cost per conversation
 - [ ] **Alerting** — error rate spike detection, latency threshold alerts  
-- [ ] **Self-hosted K8s** — Helm charts for full cluster deployment
+- [ ] **Helm Charts** — package K8s manifests as Helm charts for configurable multi-environment deployment
 - [ ] **Rate limiting** — per-IP and per-API-key limits on ingestion endpoint
 - [ ] **Export** — download conversation history as JSON/CSV
 - [ ] **More providers** — OpenAI, Anthropic, Gemini with automatic fallback
