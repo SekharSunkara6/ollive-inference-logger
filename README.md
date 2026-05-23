@@ -235,6 +235,44 @@ VITE_INGESTION_URL=http://localhost:8000
 
 ---
 
+## ☸️ Kubernetes Deployment
+
+K8s manifests for all components are in the `/k8s` folder.
+
+### Structure
+```
+k8s/
+├── deployment.yaml   # Postgres, Redis, Ingestion (2 replicas), Frontend (2 replicas)
+└── service.yaml      # Namespace, Secrets, ClusterIP services, LoadBalancer, Ingress
+```
+
+### Deploy to a K8s Cluster
+```bash
+# 1. Create namespace + secrets
+kubectl apply -f k8s/service.yaml
+
+# 2. Deploy all components
+kubectl apply -f k8s/deployment.yaml
+
+# 3. Verify pods are running
+kubectl get pods -n ollive
+
+# 4. Get frontend URL
+kubectl get svc -n ollive
+```
+
+### What's Included
+| Resource | Details |
+|---|---|
+| `Namespace` | `ollive` — isolated environment |
+| `Deployments` | Postgres, Redis, Ingestion (2 replicas), Frontend (2 replicas) |
+| `Services` | ClusterIP for internal, LoadBalancer for frontend |
+| `Ingress` | nginx — routes `/` to frontend, `/api` to ingestion |
+| `Secrets` | DB credentials stored as K8s Secret |
+| `Health checks` | Liveness + readiness probes on ingestion service |
+
+---
+
 ## 📡 API Reference
 
 | Method | Endpoint | Description |
