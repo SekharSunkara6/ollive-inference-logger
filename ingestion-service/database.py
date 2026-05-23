@@ -6,6 +6,11 @@ import os
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://ollive:ollive@127.0.0.1:5434/ollive")
 
+engine = create_engine(
+    DATABASE_URL,
+    connect_args={"sslmode": "require"} if "render.com" in DATABASE_URL else {}
+)
+
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
